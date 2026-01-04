@@ -1,19 +1,17 @@
-import os
 from sqlalchemy import create_engine
 from sqlalchemy.orm import sessionmaker
-from dotenv import load_dotenv
-load_dotenv()
 
+from app.core.config import settings
 
-DATABASE_URL = os.getenv("DATABASE_URL")
 engine = create_engine(
-    DATABASE_URL,
+    settings.DATABASE_URL,
     pool_pre_ping=True,
-    connect_args={"sslmode": "require"}
+    connect_args={"sslmode": "require"},
 )
 
 SessionLocal = sessionmaker(
     autocommit=False,
     autoflush=False,
-    bind=engine
+    bind=engine,
 )
+

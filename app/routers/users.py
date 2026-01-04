@@ -2,10 +2,10 @@ from fastapi import APIRouter, Depends, HTTPException, status
 from sqlalchemy.orm import Session
 from typing import List
 from sqlalchemy.exc import IntegrityError
-from database import SessionLocal
-from models import User
-from schemas import UserCreate, UserResponse, UserUpdate
-from schemas import PaginatedResponse
+from app.core.database import SessionLocal
+from app.models.user import User
+from app.schemas.user import UserCreate, UserResponse, UserUpdate
+from app.schemas.user import PaginatedResponse
 
 router = APIRouter(
     prefix="/users",
