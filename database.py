@@ -1,10 +1,11 @@
+import os
 from sqlalchemy import create_engine
 from sqlalchemy.orm import sessionmaker
+from dotenv import load_dotenv
+load_dotenv()
 
-DATABASE_URL = (
-    "postgresql://postgres.xgdtojhyjoktngrhkvje:Test9486276367@aws-1-ap-southeast-2.pooler.supabase.com:5432/postgres"
-)
 
+DATABASE_URL = os.getenv("DATABASE_URL")
 engine = create_engine(
     DATABASE_URL,
     pool_pre_ping=True,
